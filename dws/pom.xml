@@ -7,6 +7,14 @@
     <groupId>com.dmnlk</groupId>
     <artifactId>dw-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-
-    
+    <properties>
+        <dropwizard.version>0.8.2</dropwizard.version>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>io.dropwizard</groupId>
+            <artifactId>dropwizard-core</artifactId>
+            <version>${dropwizard.version}</version>
+        </dependency>
+    </dependencies>
 </project>
