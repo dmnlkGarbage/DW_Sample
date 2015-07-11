@@ -21,10 +21,10 @@ public class SampleResource {
     private final String defaultName;
     private final AtomicLong counter;
 
-    public SampleResource(String template, String defaultName, AtomicLong counter) {
+    public SampleResource(String template, String defaultName) {
         this.template = template;
         this.defaultName = defaultName;
-        this.counter = counter;
+        this.counter = new AtomicLong();
     }
 
     @GET
