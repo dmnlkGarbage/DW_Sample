@@ -25,6 +25,10 @@ public class SampleApplication extends Application<SampleConfiguration> {
     @Override
     public void run(SampleConfiguration configuration,
                     Environment environment) {
-        // nothing to do yet
+       final SampleResource resource = new SampleResource(
+               configuration.getTemplate(),
+               configuration.getDefaultName()
+       );
+        environment.jersey().register(resource);
     }
 }
