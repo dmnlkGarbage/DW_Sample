@@ -29,6 +29,9 @@ public class SampleApplication extends Application<SampleConfiguration> {
                configuration.getTemplate(),
                configuration.getDefaultName()
        );
+
+        final TemplateHealthCheck healthCheck = new TemplateHealthCheck(configuration.getTemplate());
+        environment.healthChecks().register("template", healthCheck);
         environment.jersey().register(resource);
     }
 }
