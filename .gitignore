@@ -17,6 +17,3 @@ hs_err_pid*
 # maven
 dependency-reduced-pom.xml
 
-
-dws/target/*
-!dws/target
