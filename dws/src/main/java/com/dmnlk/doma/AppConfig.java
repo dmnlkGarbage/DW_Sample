@@ -12,6 +12,7 @@ import javax.sql.DataSource;
  */
 @SingletonConfig
 public class AppConfig implements Config {
+    private static final AppConfig CONFIG = new AppConfig();
     private final Dialect dialect;
     @Override
     public DataSource getDataSource() {
@@ -25,5 +26,9 @@ public class AppConfig implements Config {
 
     private AppConfig() {
         dialect = new PostgresDialect();
+    }
+
+    public static AppConfig singleton() {
+        return CONFIG;
     }
 }
