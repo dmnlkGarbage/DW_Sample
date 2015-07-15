@@ -10,6 +10,7 @@ import javax.sql.DataSource;
  * @author dmnlk
  */
 public class AppConfig implements Config {
+    private final Dialect dialect;
     @Override
     public DataSource getDataSource() {
         return null;
@@ -17,9 +18,10 @@ public class AppConfig implements Config {
 
     @Override
     public Dialect getDialect() {
-        return new PostgresDialect();
+        return dialect;
     }
 
     private AppConfig() {
+        dialect = new PostgresDialect();
     }
 }
