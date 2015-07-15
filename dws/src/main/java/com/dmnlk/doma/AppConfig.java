@@ -2,6 +2,7 @@ package com.dmnlk.doma;
 
 import org.seasar.doma.jdbc.Config;
 import org.seasar.doma.jdbc.dialect.Dialect;
+import org.seasar.doma.jdbc.dialect.PostgresDialect;
 
 import javax.sql.DataSource;
 
@@ -16,7 +17,7 @@ public class AppConfig implements Config {
 
     @Override
     public Dialect getDialect() {
-        return null;
+        return new PostgresDialect();
     }
 
     private AppConfig() {
