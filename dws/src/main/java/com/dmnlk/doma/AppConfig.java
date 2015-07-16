@@ -28,7 +28,7 @@ public class AppConfig implements Config {
 
     private AppConfig() {
         dialect = new PostgresDialect();
-        dataSource = new LocalTransactionDataSource("jdbc:postgresql://localhost/localdb", "user", null);
+        dataSource = new LocalTransactionDataSource("jdbc:postgresql://localhost/localdb", "localuser", null);
     }
 
     public static AppConfig singleton() {
