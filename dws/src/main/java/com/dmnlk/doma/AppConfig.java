@@ -31,7 +31,7 @@ public class AppConfig implements Config {
         dataSource = new LocalTransactionDataSource("jdbc:postgresql://localhost/localdb", "localuser", null);
     }
 
-    public static AppConfig singleton() {
+    public static AppConfig singleton() {   
         return CONFIG;
     }
 }
