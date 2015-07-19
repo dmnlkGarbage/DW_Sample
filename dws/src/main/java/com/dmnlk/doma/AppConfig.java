@@ -29,6 +29,11 @@ public class AppConfig implements Config {
         return dialect;
     }
 
+    @Override
+    public TransactionManager getTransactionManager() {
+        return transactionManager;
+    }
+
     private AppConfig() {
         dialect = new PostgresDialect();
         dataSource = new LocalTransactionDataSource("jdbc:postgresql://localhost/localdb", "localuser", null);
