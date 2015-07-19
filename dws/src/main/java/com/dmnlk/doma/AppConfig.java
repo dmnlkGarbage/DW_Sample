@@ -5,6 +5,8 @@ import org.seasar.doma.jdbc.Config;
 import org.seasar.doma.jdbc.dialect.Dialect;
 import org.seasar.doma.jdbc.dialect.PostgresDialect;
 import org.seasar.doma.jdbc.tx.LocalTransactionDataSource;
+import org.seasar.doma.jdbc.tx.LocalTransactionManager;
+import org.seasar.doma.jdbc.tx.TransactionManager;
 
 import javax.sql.DataSource;
 
@@ -15,7 +17,8 @@ import javax.sql.DataSource;
 public class AppConfig implements Config {
     private static final AppConfig CONFIG = new AppConfig();
     private final Dialect dialect;
-    private final DataSource dataSource;
+    private final LocalTransactionDataSource dataSource;
+    private final TransactionManager transactionManager;
     @Override
     public DataSource getDataSource() {
         return dataSource;
@@ -29,9 +32,10 @@ public class AppConfig implements Config {
     private AppConfig() {
         dialect = new PostgresDialect();
         dataSource = new LocalTransactionDataSource("jdbc:postgresql://localhost/localdb", "localuser", null);
+        transactionManager = new LocalTransactionManager(dataSource.getLocalTransaction(null));
     }
 
-    public static AppConfig singleton() {   
+    public static AppConfig singleton() {
         return CONFIG;
     }
 }
