@@ -32,7 +32,7 @@ public class AppConfig implements Config {
     private AppConfig() {
         dialect = new PostgresDialect();
         dataSource = new LocalTransactionDataSource("jdbc:postgresql://localhost/localdb", "localuser", null);
-        transactionManager = new LocalTransactionManager(dataSource.getLocalTransaction(null));
+        transactionManager = new LocalTransactionManager(dataSource.getLocalTransaction(getJdbcLogger()));
     }
 
     public static AppConfig singleton() {
