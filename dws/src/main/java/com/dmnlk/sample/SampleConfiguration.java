@@ -28,7 +28,7 @@ public class SampleConfiguration extends Configuration {
     public DataSourceFactory getDataSourceFactory() {
         return dataSourceFactory;
     }
-    
+
     public void setDataSourceFactory(DataSourceFactory dataSourceFactory) {
         this.dataSourceFactory = dataSourceFactory;
     }
