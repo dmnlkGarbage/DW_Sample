@@ -37,6 +37,11 @@
             <version>1.9.5</version>
             <type>jar</type>
         </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>9.3-1103-jdbc41</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
