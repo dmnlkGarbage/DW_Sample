@@ -1,8 +1,10 @@
 package com.dmnlk.sample;
 
 import io.dropwizard.Application;
+import io.dropwizard.jdbi.DBIFactory;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import org.skife.jdbi.v2.DBI;
 
 /**
  * @author dmnlk
@@ -33,5 +35,9 @@ public class SampleApplication extends Application<SampleConfiguration> {
         final TemplateHealthCheck healthCheck = new TemplateHealthCheck(configuration.getTemplate());
         environment.healthChecks().register("template", healthCheck);
         environment.jersey().register(resource);
+
+        final DBIFactory dbiFactory = new DBIFactory();
+        final DBI dbi = dbiFactory.build(environment, configuration.getDataSourceFactory(), "postgresql");
+        
     }
 }
