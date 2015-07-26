@@ -38,6 +38,6 @@ public class SampleApplication extends Application<SampleConfiguration> {
 
         final DBIFactory dbiFactory = new DBIFactory();
         final DBI dbi = dbiFactory.build(environment, configuration.getDataSourceFactory(), "postgresql");
-        
+
     }
 }
