@@ -1,5 +1,6 @@
 package com.dmnlk.sample;
 
+import com.dmnlk.doma.dao.TAccountDao;
 import io.dropwizard.Application;
 import io.dropwizard.jdbi.DBIFactory;
 import io.dropwizard.setup.Bootstrap;
@@ -38,6 +39,6 @@ public class SampleApplication extends Application<SampleConfiguration> {
 
         final DBIFactory dbiFactory = new DBIFactory();
         final DBI dbi = dbiFactory.build(environment, configuration.getDataSourceFactory(), "postgresql");
-
+        dbi.onDemand(TAccountDao.class);
     }
 }
