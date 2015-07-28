@@ -34,6 +34,8 @@ public class SampleResource {
     @Timed
     public Saying sayHello(@QueryParam("name")Optional<String> name) {
         final String value = String.format(template, name.or(defaultName));
+        Integer a = tAccountDao.findById(1);
+        System.out.println(String.format("data is %s", a));
         return  new Saying(counter.incrementAndGet(), value);
     }
 
