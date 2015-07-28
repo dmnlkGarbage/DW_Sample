@@ -28,17 +28,22 @@ public class SampleApplication extends Application<SampleConfiguration> {
     @Override
     public void run(SampleConfiguration configuration,
                     Environment environment) {
+
+
+        final DBIFactory dbiFactory = new DBIFactory();
+        final DBI dbi = dbiFactory.build(environment, configuration.getDataSourceFactory(), "postgresql");
+        TAccountDao tAccountDao = dbi.onDemand(TAccountDao.class);
        final SampleResource resource = new SampleResource(
                configuration.getTemplate(),
-               configuration.getDefaultName()
+               configuration.getDefaultName(),
+               tAccountDao
        );
 
         final TemplateHealthCheck healthCheck = new TemplateHealthCheck(configuration.getTemplate());
         environment.healthChecks().register("template", healthCheck);
         environment.jersey().register(resource);
 
-        final DBIFactory dbiFactory = new DBIFactory();
-        final DBI dbi = dbiFactory.build(environment, configuration.getDataSourceFactory(), "postgresql");
-        TAccountDao tAccountDao = dbi.onDemand(TAccountDao.class);
+
+
     }
 }
