@@ -1,6 +1,7 @@
 package com.dmnlk.sample;
 
 import com.codahale.metrics.annotation.Timed;
+import com.dmnlk.doma.dao.TAccountDao;
 import com.google.common.base.Optional;
 
 import javax.ws.rs.GET;
@@ -20,11 +21,13 @@ public class SampleResource {
     private final String template;
     private final String defaultName;
     private final AtomicLong counter;
+    private final TAccountDao tAccountDao;
 
-    public SampleResource(String template, String defaultName) {
+    public SampleResource(String template, String defaultName, TAccountDao dao) {
         this.template = template;
         this.defaultName = defaultName;
         this.counter = new AtomicLong();
+        this.tAccountDao = dao;
     }
 
     @GET
