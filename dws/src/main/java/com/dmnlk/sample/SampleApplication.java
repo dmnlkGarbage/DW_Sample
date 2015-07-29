@@ -1,5 +1,6 @@
 package com.dmnlk.sample;
 
+import com.dmnlk.doma.AppConfig;
 import com.dmnlk.doma.dao.TAccountDao;
 import io.dropwizard.Application;
 import io.dropwizard.jdbi.DBIFactory;
@@ -11,6 +12,7 @@ import org.skife.jdbi.v2.DBI;
  * @author dmnlk
  */
 public class SampleApplication extends Application<SampleConfiguration> {
+
     public static void main(String[] args) throws  Exception {
         new SampleApplication().run(args);
     }
@@ -28,10 +30,11 @@ public class SampleApplication extends Application<SampleConfiguration> {
     @Override
     public void run(SampleConfiguration configuration,
                     Environment environment) {
-
+        AppConfig.singleton();
 
         final DBIFactory dbiFactory = new DBIFactory();
         final DBI dbi = dbiFactory.build(environment, configuration.getDataSourceFactory(), "postgresql");
+
         TAccountDao tAccountDao = dbi.onDemand(TAccountDao.class);
        final SampleResource resource = new SampleResource(
                configuration.getTemplate(),
