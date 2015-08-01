@@ -30,8 +30,8 @@ public class SampleApplication extends Application<SampleConfiguration> {
     @Override
     public void run(SampleConfiguration configuration,
                     Environment environment) {
-        AppConfig.singleton();
-
+        AppConfig appConfig = AppConfig.singleton();
+        appConfig.getDataSource();
         final DBIFactory dbiFactory = new DBIFactory();
         final DBI dbi = dbiFactory.build(environment, configuration.getDataSourceFactory(), "postgresql");
 
