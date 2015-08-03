@@ -3,7 +3,7 @@ package com.dmnlk.sample;
 import com.codahale.metrics.annotation.Timed;
 import com.dmnlk.doma.dao.TAccountDao;
 import com.google.common.base.Optional;
-import jdk.nashorn.internal.objects.annotations.Getter;
+
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
