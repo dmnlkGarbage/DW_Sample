@@ -3,6 +3,7 @@ package com.dmnlk.sample;
 import com.codahale.metrics.annotation.Timed;
 import com.dmnlk.doma.dao.TAccountDao;
 import com.google.common.base.Optional;
+import jdk.nashorn.internal.objects.annotations.Getter;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -37,6 +38,11 @@ public class SampleResource {
         Integer a = tAccountDao.findById(1);
         System.out.println(String.format("data is %s", a));
         return  new Saying(counter.incrementAndGet(), value);
+    }
+
+    @GET
+    public String get() {
+        return  "";
     }
 
 }
