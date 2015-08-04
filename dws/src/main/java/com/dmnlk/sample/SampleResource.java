@@ -42,6 +42,7 @@ public class SampleResource {
 
     @GET
     public String get() {
+        // htmltemplate返す
         return  "";
     }
 
