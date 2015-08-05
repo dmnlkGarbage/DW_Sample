@@ -6,6 +6,8 @@ import io.dropwizard.Application;
 import io.dropwizard.jdbi.DBIFactory;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import io.dropwizard.views.ViewBundle;
+import javafx.scene.web.WebViewBuilder;
 import org.skife.jdbi.v2.DBI;
 
 /**
@@ -24,7 +26,7 @@ public class SampleApplication extends Application<SampleConfiguration> {
 
     @Override
     public void initialize(Bootstrap<SampleConfiguration> bootstrap) {
-        // nothing to do yet
+        bootstrap.addBundle(new ViewBundle<SampleConfiguration>());
     }
 
     @Override
@@ -45,7 +47,6 @@ public class SampleApplication extends Application<SampleConfiguration> {
         final TemplateHealthCheck healthCheck = new TemplateHealthCheck(configuration.getTemplate());
         environment.healthChecks().register("template", healthCheck);
         environment.jersey().register(resource);
-
 
 
     }
