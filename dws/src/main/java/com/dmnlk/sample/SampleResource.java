@@ -40,10 +40,4 @@ public class SampleResource {
         return  new Saying(counter.incrementAndGet(), value);
     }
 
-    @GET
-    public String get() {
-        // htmltemplate返す
-        return  "";
-    }
-
 }
