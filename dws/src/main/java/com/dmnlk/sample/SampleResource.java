@@ -3,6 +3,7 @@ package com.dmnlk.sample;
 import com.codahale.metrics.annotation.Timed;
 import com.dmnlk.doma.dao.TAccountDao;
 import com.google.common.base.Optional;
+import org.apache.log4j.Logger;
 
 
 import javax.ws.rs.GET;
@@ -19,6 +20,7 @@ import java.util.concurrent.atomic.AtomicLong;
 @Path("/hello")
 @Produces(MediaType.APPLICATION_JSON)
 public class SampleResource {
+    Logger logger = Logger.getLogger(getClass());
     private final String template;
     private final String defaultName;
     private final AtomicLong counter;
@@ -36,7 +38,7 @@ public class SampleResource {
     public Saying sayHello(@QueryParam("name")Optional<String> name) {
         final String value = String.format(template, name.or(defaultName));
         Integer a = tAccountDao.findById(1);
-        System.out.println(String.format("data is %s", a));
+        logger.info(a);
         return  new Saying(counter.incrementAndGet(), value);
     }
 
